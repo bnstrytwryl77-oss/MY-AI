@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S AR HUD</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; color: #fff; font-family: monospace; }
+        /* מסך טעינה */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 100;
+        }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #00ffff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* וידאו המצלמה חבוי (אנחנו משתמשים בו כטקסטורה) */
+        #video-feed { display: none; }
+        
+        /* כפתור הפעלה */
+        #start-btn {
+            position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
+            padding: 15px 30px; background: rgba(0,255,255,0.2); border: 2px solid #00ffff;
+            color: #00ffff; font-size: 18px; cursor: pointer; border-radius: 5px; z-index: 110; display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>טוען מערכות תלת-ממד ובינה מלאכותית...</p>
+    </div>
+    
+    <video id="video-feed" autoplay playsinline></video>
+    <button id="start-btn">אתחל מערכת J.A.R.V.I.S</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
